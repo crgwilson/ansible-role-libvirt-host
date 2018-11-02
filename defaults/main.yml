@@ -1,0 +1,11 @@
+---
+libvirt_host_install_virt_manager: true
+
+libvirt_host_service_name: libvirtd
+libvirt_host_service_state: started
+libvirt_host_service_enabled: true
+
+# Create a bridge interface for VMs to use and disable the physical interface
+libvirt_host_configure_interfaces: true
+libvirt_host_bridge_name: br0
+

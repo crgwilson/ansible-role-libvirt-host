@@ -1,0 +1,15 @@
+{{ ansible_managed | comment }}
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+auto lo
+iface lo inet loopback
+
+# Set up interfaces manually, avoiding conflicts with, e.g., network manager
+iface enp3s0 inet manual
+
+# Bridge setup
+auto {{ libvirt_host_bridge_name }}
+iface {{ libvirt_host_bridge_name }} inet dhcp
+  bridge_ports enp3s0
+

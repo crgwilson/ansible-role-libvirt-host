@@ -1,0 +1,6 @@
+---
+- name: restart libvirt daemon
+  service:
+    name: "{{ libvirt_host_service_name }}"
+    state: restarted
+

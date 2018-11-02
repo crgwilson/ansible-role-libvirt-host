@@ -1,0 +1,13 @@
+---
+libvirt_host_packages:
+  - qemu-kvm
+  - libvirt-bin
+  - virtinst
+	- python-libvirt
+
+libvirt_host_virtmanager_packages:
+  - virt-manager
+
+libvirt_host_bridge_packages:
+  - bridge-utils
+

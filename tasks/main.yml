@@ -1,0 +1,41 @@
+---
+- name: Load OS specific vars
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution }}.yml"
+  tags:
+    - always
+
+- name: Install libvirt packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ libvirt_host_packages }}"
+  tags:
+    - packages
+
+- name: Install virt-manager
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ libvirt_host_virtmanager_packages }}"
+  when: libvirt_host_install_virt_manager
+  tags:
+    - packages
+
+- name: Configure interfaces
+  template:
+    src: etc/network/interfaces.j2
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: 0644
+  when: libvirt_host_configure_interfaces
+
+- name: Start libvirt service
+  service:
+    name: "{{ libvirt_host_service_name }}"
+    enabled: "{{ libvirt_host_service_enabled }}"
+    state: "{{ libvirt_host_service_state }}"
+
