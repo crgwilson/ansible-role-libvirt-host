@@ -25,4 +25,4 @@
 .kitchen/
 .vagrant/
 *.retry
-*.swp<Paste>
+*.swp
