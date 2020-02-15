@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  author: crgwilson
+  description: Setup boxes to use as KVM hypervisors for my home lab
+  license: Apache v2
+  min_ansible_version: 2.5
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+
+dependencies: []
