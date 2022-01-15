@@ -1,4 +1,1 @@
-ansible~=2.9.0
-ansible-lint
-flake8
-yamllint
+ansible==5.1.0
